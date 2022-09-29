@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FormInput from "../form-input/form-input.component";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -19,8 +20,8 @@ const SignUpForm = () => {
   console.log(formFields);
 
   const resetFormFields = () => {
-    setFormFields(defaultFormFields)
-  }
+    setFormFields(defaultFormFields);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -37,14 +38,13 @@ const SignUpForm = () => {
       );
 
       await createUserDocumentFromAuth(user, { displayName });
-      resetFormFields()
+      resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
-        alert('Cannot create user, email already in use')
+        alert("Cannot create user, email already in use");
       } else {
         console.log("user creation encountered an error", error);
       }
-      
     }
   };
 
@@ -58,8 +58,8 @@ const SignUpForm = () => {
     <div>
       <h1>Sign up with your email and password</h1>
       <form onSubmit={handleSubmit}>
-        <label>Display Name</label>
-        <input
+        <FormInput
+          label="Display Name"
           type="text"
           required
           onChange={handleChange}
@@ -67,8 +67,8 @@ const SignUpForm = () => {
           value={displayName}
         />
 
-        <label>Email</label>
-        <input
+        <FormInput
+          label="Email"
           type="email"
           required
           onChange={handleChange}
@@ -76,8 +76,8 @@ const SignUpForm = () => {
           value={email}
         />
 
-        <label>Password</label>
-        <input
+        <FormInput
+          label="Password"
           type="password"
           required
           onChange={handleChange}
@@ -85,8 +85,8 @@ const SignUpForm = () => {
           value={password}
         />
 
-        <label>Confirm Password</label>
-        <input
+        <FormInput
+          label="Confirm Password"
           type="password"
           required
           onChange={handleChange}
