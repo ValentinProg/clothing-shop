@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
         <span className="price">{price}</span>
       </div>
       <Button buttonType="inverted" onClick={addproductToCart}>
-        Add to card 118
+        Add to card 
       </Button>
     </div>
   );
